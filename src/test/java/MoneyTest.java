@@ -29,4 +29,12 @@ public class MoneyTest {
         Dollar dollar10 = (Dollar)Money.createMoney(10, Money.currencyEnum.USD);
         assertFalse(dollar10.equals(new Chf(10)));
     }
+
+    @Test
+    public void assertEquals(){
+        assertFalse(Money.doller(10).equals(Money.chf(5).multiply(2)));
+        assertTrue(Money.doller(10).equals(Money.doller(5).multiply(2)));
+        assertFalse(Money.doller(9).equals(Money.doller(5).multiply(2)));
+    }
+
 }

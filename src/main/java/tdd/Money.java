@@ -17,12 +17,17 @@ public class Money {
         }
     }
     protected final int amount;
-    private String currency;
     private currencyEnum currencyType;
 
     public Money(int amount, currencyEnum currency) {
         this.amount = amount;
         this.currencyType = currency;
+    }
+    public static Money doller(int amount){
+        return createMoney(amount, currencyEnum.USD);
+    }
+    public static Money chf(int amount){
+        return createMoney(amount, currencyEnum.CHF);
     }
 
     public static Money createMoney(int amount, currencyEnum currency) {
