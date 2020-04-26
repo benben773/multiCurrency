@@ -3,8 +3,7 @@ import tdd.Chf;
 import tdd.Dollar;
 import tdd.Money;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author ：ls05
@@ -13,14 +12,21 @@ import static org.junit.Assert.assertTrue;
 public class MoneyTest {
     @Test
     public void dollarTest(){
-        Dollar five = new Dollar(5);
-        Dollar ten =  five.multiply(2);
+        Dollar five = (Dollar)Money.createMoney(5,Money.currencyEnum.USD);
+        Dollar ten =  (Dollar)five.multiply(2);
         assertTrue(ten.equals(new Dollar(10)));
     }
     @Test
     public void chfTest(){
-        Chf five = new Chf(5);
-        Chf ten =  five.multiply(2);
+        Chf five = (Chf) Money.createMoney(5, Money.currencyEnum.CHF);
+        Chf ten =  (Chf)five.multiply(2);
         assertTrue(ten.equals(new Chf(10)));
+    }
+    @Test
+    public void equalsTest(){
+        Chf five = (Chf) Money.createMoney(5, Money.currencyEnum.CHF);
+        Chf ten =  (Chf)five.multiply(2);
+        Dollar dollar10 = (Dollar)Money.createMoney(10, Money.currencyEnum.USD);
+        assertFalse(dollar10.equals(new Chf(10)));
     }
 }

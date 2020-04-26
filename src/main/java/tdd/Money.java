@@ -1,14 +1,41 @@
 package tdd;
 
+import java.util.Currency;
+
 /**
  * @author ：ls05
  * @date ：Created in 2020/4/26 22:09
  */
 public class Money {
-    protected final int amount;
+    public enum currencyEnum{
+        CHF("CHF"),USD("USD");
 
-    public Money(int amount) {
+        private String type;
+
+        currencyEnum(String type) {
+            this.type = type;
+        }
+    }
+    protected final int amount;
+    private String currency;
+    private currencyEnum currencyType;
+
+    public Money(int amount, currencyEnum currency) {
         this.amount = amount;
+        this.currencyType = currency;
+    }
+
+    public static Money createMoney(int amount, currencyEnum currency) {
+        if (currencyEnum.CHF.equals(currency)) {
+            return new Chf(amount);
+        }else if(currencyEnum.USD.equals(currency)){
+            return new Dollar(amount);
+        }
+        return null;
+    }
+
+    public Money multiply(int param) {
+        return createMoney(amount * param,this.currencyType);
     }
 
     public int getAmount() {

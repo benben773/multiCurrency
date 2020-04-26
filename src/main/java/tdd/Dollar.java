@@ -7,10 +7,8 @@ package tdd;
 public class Dollar  extends Money {
 
     public Dollar(int amount) {
-        super(amount);
+        super(amount,currencyEnum.USD);
     }
 
-    public Dollar multiply(int param) {
-        return new Dollar(amount * param);
-    }
+
 }

@@ -7,10 +7,7 @@ package tdd;
 public class Chf extends Money {
 
     public Chf(int amount) {
-        super(amount);
+        super(amount,currencyEnum.CHF);
     }
 
-    public Chf multiply(int param) {
-        return new Chf(amount * param);
-    }
 }
