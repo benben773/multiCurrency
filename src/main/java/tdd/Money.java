@@ -24,23 +24,14 @@ public class Money {
         this.currencyType = currency;
     }
     public static Money doller(int amount){
-        return createMoney(amount, currencyEnum.USD);
+        return  new Money(amount, currencyEnum.USD);
     }
     public static Money chf(int amount){
-        return createMoney(amount, currencyEnum.CHF);
-    }
-
-    public static Money createMoney(int amount, currencyEnum currency) {
-        if (currencyEnum.CHF.equals(currency)) {
-            return new Chf(amount);
-        }else if(currencyEnum.USD.equals(currency)){
-            return new Dollar(amount);
-        }
-        return null;
+        return new Money(amount, currencyEnum.CHF);
     }
 
     public Money multiply(int param) {
-        return createMoney(amount * param,this.currencyType);
+        return new Money(amount * param,this.currencyType);
     }
 
     public int getAmount() {
@@ -50,6 +41,6 @@ public class Money {
     @Override
     public boolean equals(Object obj) {
         int amount = ((Money) obj).getAmount();
-        return this.amount == amount && getClass().equals(obj.getClass());
+        return this.amount == amount && this.currencyType.equals(((Money) obj).currencyType);
     }
 }
